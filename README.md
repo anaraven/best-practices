@@ -8,6 +8,7 @@ TODO: put meat
 
 # The goal of science
 
+# Why do we publish
 + Communicate with the general public
     + Ethics
 + communicate with scientists who will cite you
@@ -19,9 +20,12 @@ TODO: put meat
 + communicate with your future self
 + Communicate with computers
 
+# Collaboration
++ Project debt
+
 # Folder structure
 
-# File nameing convention
+# File naming convention
 + date format YYYY-MM-DD
 + Avoid metadata
 
