@@ -4,10 +4,19 @@ TEMPLATE:=template.html
 DESTDIR:=../site
 
 ALL_MD:=$(wildcard *.md)
+ALL_GV:=$(wildcard *.gv)
 TARGETS:=$(patsubst %.md, $(DESTDIR)/%.html, $(ALL_MD))
+TARGETS+=$(patsubst %.gv, $(DESTDIR)/%.svg, $(ALL_GV))
 
 all: $(TARGETS)
 
 $(DESTDIR)/%.html: options.yaml %.md
-	@pandoc --mathjax --section-divs --to revealjs --template=$(TEMPLATE) $^ -o $@
+	pandoc --citeproc --mathjax --section-divs --to revealjs --template=$(TEMPLATE) $^ -o $@
 	@date '+%Y-%m-%d %H:%M:%S "$@" is done'
+
+$(DESTDIR)/%.svg: %.gv
+	@dot -Tsvg -o $@ $^
+	@date '+%Y-%m-%d %H:%M:%S "$@" is done'
+
+%.pdf: %.md
+	pandoc --citeproc --to pdf $^ -o $@

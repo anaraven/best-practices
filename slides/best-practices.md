@@ -1,16 +1,17 @@
 ---
 title: 'Best Practices'
-subtitle: 'Best practices'
+subtitle: 'A talk for Barcelona Supercomputing Center's Ph.D. students'
 author: Andrés Aravena, PhD
 company: Istanbul University
 date: "November 5, 2021"
 lang: en
+bibliography: refs.bib
 ---
 
 ## **Welcome to Ph.D. student's life** {.center .Large}
 Congratulations, by the way
 
-## Doing a Ph.D. is an amazing experience
+## Doing a Ph.D. is an amazing experience {.center}
 But it can also be stressful
 
 
@@ -22,6 +23,13 @@ Some of them are personal opinions
 
 Some of them are endorsed by research
 :::
+
+## I am Andres Aravena
++ Assistant Professor at Molecular Biology and Genomics Department
++ Mathematical Engineer, U. of Chile
++ PhD Informatics, U Rennes 1, France
++ PhD Mathematical Modeling, U. of Chile
++ Research in machine learning for metagenomics, and in gene expression analysis for systems biology
 
 ## Philosophy, not tools
 Tools will change in time. There will be new tools
@@ -53,13 +61,14 @@ Good practices help teamwork
 ## …but I work alone…
 Even if we work alone, we are still communicating
 
-+ with your **supervisor**
++ with your **supervisor/advisor**
 + with the **referees** of your paper
 + with other **scientists** that read (and cite) you
+    + including the next Ph.D. student in your lab
 + with the **general public**
 + with our **future self**
 
-Each one of these interactions forces/conveys/brings a corresponding good practice/discipline
+Each one of these interactions can improve following a good practice
 
 <!-- ## …but I work alone…
 Even if we work alone, we are still communicating with reviewers, other scientists (that we would like to cite us) and the general public.
@@ -94,6 +103,10 @@ The game does not end when you publish
 
 Make your work easy to _understand_ and _replicate_
 
+::: source
+I forgot where I read it
+:::
+
 ## with the **general public**
 Eventually, your work will have an impact outside academia
 
@@ -105,16 +118,17 @@ We need to be aware of the _ethical_ implications
 + Privacy
 + Truth
 
-> Replication Crisis
+> Replicability Crisis
 
 ## with our **future self**
 Nothing is more frustrating that reading your old work
 
 "The past is a foreign country"
 
-Undocumented code/protocols are hard to understand… and you can only blame yourself
+Undocumented code/protocols are hard to understand…  
+and you can only blame yourself
 
-## We need good practices, because {.Large}
+## We need good practices, because {.Large .level1 .center}
 our mind fool us
 
 ## We think we will never forget, but we do
@@ -124,6 +138,10 @@ When we see something or learn something, this fact is present in our short-term
 
 ## We think our memories correspond to facts, but often they do not
 > "Things were exactly as I remember"
+
+Research shows that our memory is not at all a "recorder"
+
+We misremember a lot
 
 ## We think that everybody knows what we know, so they do not need explanations
 > "I understand it, so everybody understands it"
@@ -143,14 +161,16 @@ This is the Dunning-Kruger effect
 ## We are bad at estimating the complexity of projects
 We think that we can finish a project in less time that it will really take
 
-## First idea: {.good .level1 .center}
+## First idea: {.good .center .level1}
 :::{.Huge}
-Structure
+Structured Documents
 :::
 
 
 ## Structured documents
 You probably know that using a good _data structure_ can dramatically improve an algorithm
+
+And you use _structured programs_
 
 The same applies to structuring our documents
 
@@ -164,6 +184,10 @@ The key idea is to describe _what things are_, not _how they look_
 Describe the role of text, not the "looks"
 
 Separate style from structure
+
+::: source
+This part is based on the ideas discussed in "LaTeX: A Document Preparation System" by Leslie Lamport (1986).
+:::
 
 ## Structural elements
 + Sections, subsections, paragraphs
@@ -187,7 +211,7 @@ A LaTeX document looks like this
 \date{28 May, 1936}
 \begin{document}
 \section{Introduction}
-The "computable" numbers may be described as the real numbers whose
+The ``computable'' numbers may be described as the real numbers whose
 expression as a decimal are calculable by finite means.
 \end{document}
 ```
@@ -200,13 +224,34 @@ Changing the `documentclass` will change the document _look_
 + Do not waste time playing with fonts
 + Good journals accept LaTeX submissions  
 (they also accept Microsoft Word format)
-+ LaTeX files are _text files_
-    + Independent of any provider
-    + Use your favorite text editor (VScode?)
-    + Version control friendly (GitHub?)
-    + Can probably be read 20 years from now
+
+## LaTeX files are _text files_
++ Independent of any provider
++ Use your favorite text editor (VScode?)
++ Version control friendly (GitHub?)
++ Can probably be read 20 years from now
  
-    (we cannot say the same about Microsoft Word)
+(we cannot say the same about Microsoft Word)
+
+## According to the author of LaTeX
+> "[LaTeX] It's easy to use---if you're one of the 2% of the population who thinks logically and can read an instruction
+manual. The other 98 % of the population would find
+it very hard or impossible to use.
+
+So maybe the main advantage is that it _forces_ you to think logically and organize your ideas
+
+::: source
+"How (La)TeX changed the face of Mathematics". An E-interview with Leslie Lamport. <http://lamport.azurewebsites.net/pubs/lamport-latex-interview.pdf>
+:::
+
+## 3 mistakes that people should stop making
+1. Worrying too much about formatting and not enough about content.
+2. Worrying too much about formatting and not enough about content.
+3. Worrying too much about formatting and not enough about content.
+
+::: source
+"How (La)TeX changed the face of Mathematics". An E-interview with Leslie Lamport. <http://lamport.azurewebsites.net/pubs/lamport-latex-interview.pdf>
+:::
 
 ## Bonus: Slides for presentations
 After writing your paper, you will probably present it
@@ -225,6 +270,8 @@ $$(a+b)^n=\sum_{k=0}^n \frac{n!}{k!(n-k)!} a^k b^{n-k}$$
 
 You can use this syntax in Microsoft Word's Equation Editor, and in web pages (using KaTeX or MathJax)
 
+Learning how to write math is a good investment
+
 ## Bibliographic References
 There are _hundreds_ of citation styles
 
@@ -236,6 +283,9 @@ References are stored in a separate text file, in BiBTeX format
 
 Many tools can create BiBTeX files for you
 
++ Zotero
++ Mendeley
+
 ## LaTeX disadvantages
 + LaTeX is hard to learn
    + This discourages many people
@@ -243,7 +293,7 @@ Many tools can create BiBTeX files for you
    + You need to have the Reference Manual at hand
 + It is oriented to producing printed material
     + It produces PDF files or equivalents
-    + Not suitable for Web or ePub
+    + Not suitable for Web or eBook
 + Writing tables is hard
 
 ## Alternative: Markdown
@@ -260,17 +310,25 @@ expression as a decimal are calculable by finite means.
 ```
 You probably have seen it in GitHub or Jupyter Notebooks
 
+Same philosophy as LaTeX, but simpler
+
 ## Markdown's author says:
 > "The overriding design goal for Markdown’s formatting syntax is to make it as readable as possible.
 >
 > "The idea is that a Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions."
+
+::: source
+John Gruber
+<https://daringfireball.net/projects/markdown/>
+:::
 
 ## Using Markdown in practice
 There are dozens (maybe hundreds) of Markdown editors and compilers
 
 They offer many extensions
 
-They are not always compatible.  
+They are not always compatible
+
 There is not yet an official standard
 
 **Recommendation**: pandoc
@@ -305,6 +363,11 @@ Pandoc can convert between _many_ formats, including
 
 + Handles BiBTeX references
 
+::: notes
+https://www.tablesgenerator.com/markdown_tables
+https://pandoc.org/try/
+:::
+
 ## Alternative: Microsoft Word
 Depending on your _boundary conditions_, you may choose to use a WYSIWYG word processor
 
@@ -312,11 +375,78 @@ You can still follow the same philosophy:
 
 > Separate style from structure
 
-## Structured Word documents
+## Style is not Structure {.large}
+In word processors like Word®,  
+_What You See Is What You Get_
 
-## Practice
-- avoid WYSIWYG (until the last minute)
-- markdown/latex/pandoc/(Google docs+rules)
+This is sometimes called **WYSIWYG**
+
+It is easy to change fonts, sizes, colors and other visual attributes, without paying attention to *structure*
+
+## It is like a house {.large}
+
+Structure makes the house solid.
+
+If you only do decoration, the house looks nice but it is not solid.
+
+Wall structure come first, "painting" is secondary
+
+## Structured Word documents {.no-gap .center-h .full-v .shadow}
+![](http://dry-lab.org/images/cmb1/Screenshot-2020-09-24-20.54.07.png)
+
+## Now the document has structure {.no-gap .center-h .full-v .shadow}
+![](http://dry-lab.org/images/cmb1/Screenshot-2020-09-24-20.58.42.png)
+
+
+## Second idea {.center .good .level1}
+[Folder structure]{.Huge}
+
+## Prepare your files for the next user… <br/>it may be you
+> Someone unfamiliar with your project should be able to look at your computer files and understand in detail what you did and why
+
+::: source  
+William Stafford Noble. _“A Quick Guide to Organizing Computational Biology Projects.”_ PLoS Computational Biology 5, no. 7 (2009): 1–5. https://doi.org/10.1371/journal.pcbi.1000424.  
+:::
+
+
+## This “someone” could be :
+> ::: small
+> +  someone who read your published article and wants to try to reproduce your work,
+> + a collaborator who wants to understand the details of your experiments,
+> + a future student working in your lab who wants to extend your work after you have moved on to a new job,
+> + your research advisor, who may be interested in understanding your work or who may be evaluating your research skills.
+> :::
+
+Most commonly, however, that “someone” is you. 
+
+::: source  
+William Stafford Noble. _“A Quick Guide to Organizing Computational Biology Projects.”_ PLoS Computational Biology 5, no. 7 (2009): 1–5. https://doi.org/10.1371/journal.pcbi.1000424.  
+:::
+
+
+## Use a folder for every project {.center-h}
+![](folder-struct.svg)
+
++ `docs` is where you write
++ `refs` is to store reference documents, like citations
++ `data` is anything that you get from the real world into the computer
++ `results` is what your code produces
++ `scripts` and `src` is where you write your code
++ `bin` is for the compiled code
+
+## Here we follow two papers:
+
+a [@Noble2009]
+
+b (@Noble2009)
+
+https://pandoc.org/try/?text=%23+Section%0A%23%23+Subsection%0A%0A*+bullet%0A*+bullet+2%0A%0A%7C+Number++++%7C+Q1++%7C+Q2+%7C+Q3+%7C+Q4++%7C+Q5++%7C+Q6++%7C+Q7+%7C+Average+%7C%0A%7C-----------%7C-----%7C----%7C----%7C-----%7C-----%7C-----%7C----%7C---------%7C%0A%7C+405150030+%7C+100+%7C+30+%7C+75+%7C+100+%7C+100+%7C+100+%7C+60+%7C+81++++++%7C%0A%7C+405160015+%7C+0+++%7C+0++%7C+0++%7C+10++%7C+0+++%7C+100+%7C+0++%7C+16++++++%7C&from=markdown&to=latex&standalone=0
+
+https://www.tablesgenerator.com/markdown_tables
+
++ Greg Wilson et al. _“Best Practices for Scientific Computing.”_ PLoS Biology 12, no. 1 (2014): e1001745. https://doi.org/10.1371/journal.pbio.1001745.
++ William Stafford Noble. _“A Quick Guide to Organizing Computational Biology Projects.”_ PLoS Computational Biology 5, no. 7 (2009): 1–5. https://doi.org/10.1371/journal.pcbi.1000424.
+
 
 
 ## We communicate with several entities
@@ -334,7 +464,7 @@ You can still follow the same philosophy:
     - write code to produce figures/tables
     - use checklists for repetitive work
 
-# Collaborating {.center .good}
+## Collaborating {.center .good .level1}
 ## Sharing
 + Git
     + GitHub
@@ -348,3 +478,21 @@ You can still follow the same philosophy:
 
 ## Choosing roles
 ## Who must be author
+## Practice
+- avoid WYSIWYG (until the last minute)
+- markdown/latex/pandoc/(Google docs+rules)
+
+- When we have coauthors
+    - Define who are the authors early
+    - define and agree on communication methods
+        - slack
+    - Do not send attached word documents!
+        - `doc-v1-real-final2.docx`
+        - leads to a cacophony of version
+    - Tools to collaborate
+        - Shared folders
+        - Github 
+        - Docker
+    - Online conversation
+
+## References

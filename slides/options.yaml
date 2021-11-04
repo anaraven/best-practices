@@ -5,7 +5,7 @@ transition: fade
 backgroundTransition: fade
 self_contained: no
 slide_level: 2
-plugins-notes: true
+plugin-notes: true
 revealjs-url: js/reveal.js-3.3.0.1
 revealjs-url-online: 'https://cdn.jsdelivr.net/npm/reveal.js@4'
 controls: false
