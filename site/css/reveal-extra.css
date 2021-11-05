@@ -290,7 +290,7 @@ code {
 /* } */
 
 .scroll {
-  max-height: 17em;
+  max-height: 14em;
   overflow: scroll;
 }
 
@@ -567,4 +567,10 @@ iframe.logo {
 
 .reveal pre.Large code {
     font-size: 1.4em;
+}
+
+.reveal .csl-entry {
+    text-align: left;
+    font-size: 0.6em;
+    margin-bottom: 0.5em;
 }

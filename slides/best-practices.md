@@ -1,11 +1,13 @@
 ---
 title: 'Best Practices'
-subtitle: 'A talk for Barcelona Supercomputing Center's Ph.D. students'
+subtitle: "A talk for Barcelona Supercomputing Center's Ph.D. students"
 author: Andrés Aravena, PhD
 company: Istanbul University
 date: "November 5, 2021"
 lang: en
-bibliography: refs.bib
+bibliography: [../../blog/_priv/bib/library.bib, ../../blog/_priv/bib/GeneralBooks.bib]
+nocite: |
+  @Noble2009, @Wilson2014, @PeterJ.Feibelman165, @AlisonB.Miller171, @RyderCarroll3260, @DavidAllen1374, @Silva2007, @Annesley2010c, @Derish2010, @Annesley2010b, @Annesley2010, @Annesley2010f, @Annesley2010e, @Annesley2010a, @Annesley2010g, @Annesley2010h, @Annesley2010d, @Annesley2011, @Derish2011, @Annesley2011b, @Annesley2011a
 ---
 
 ## **Welcome to Ph.D. student's life** {.center .Large}
@@ -25,13 +27,13 @@ Some of them are endorsed by research
 :::
 
 ## I am Andres Aravena
-+ Assistant Professor at Molecular Biology and Genomics Department
++ Assistant Professor at Molecular Biology and Genomics Department, Istanbul University
 + Mathematical Engineer, U. of Chile
-+ PhD Informatics, U Rennes 1, France
++ PhD Informatics, INRIA–U Rennes 1, France
 + PhD Mathematical Modeling, U. of Chile
 + Research in machine learning for metagenomics, and in gene expression analysis for systems biology
 
-## Philosophy, not tools
+## Focus on Philosophy, not Tools
 Tools will change in time. There will be new tools
 
 You probably use tools that did not exist 10 years ago
@@ -52,7 +54,7 @@ What is the value of a result that is not made public?
 ## We communicate with our _collaborators_
 Most of research is done in teams
 
-Good practices help teamwork
+Good practices help teamwork, by:
 
 + Keep track of what was (or was not) done
 + Coordinate next steps
@@ -118,7 +120,7 @@ We need to be aware of the _ethical_ implications
 + Privacy
 + Truth
 
-> Replicability Crisis
+> This is reflected in the _Reproducibility Crisis_
 
 ## with our **future self**
 Nothing is more frustrating that reading your old work
@@ -128,13 +130,15 @@ Nothing is more frustrating that reading your old work
 Undocumented code/protocols are hard to understand…  
 and you can only blame yourself
 
-## We need good practices, because {.Large .level1 .center}
-our mind fool us
+## We need good practices, because {.large .level1 .center  .black background="yellow"}
+[our mind fools us]{.Huge}
 
 ## We think we will never forget, but we do
 > "I remember it now, therefore I will remember it forever"
 
 When we see something or learn something, this fact is present in our short-term memory and we feel like we will always remember it
+
+**Solution:** Use a journal (or lab notebook, or blog)
 
 ## We think our memories correspond to facts, but often they do not
 > "Things were exactly as I remember"
@@ -143,8 +147,26 @@ Research shows that our memory is not at all a "recorder"
 
 We misremember a lot
 
+**Solution:** Use a journal
+
+## We are bad at estimating projects' complexity 
+We think that we can finish a project in less time that it will really take
+
+**Solution:** Write in your journal how much time you worked every day.  
+Reflect on how did you use your time
+
 ## We think that everybody knows what we know, so they do not need explanations
 > "I understand it, so everybody understands it"
+
+This is the _curse of knowledge_
+
+It is **the main reason** why our text is hard to read
+
+**Solution:** still trying to figure out. Practice.
+
+
+## We think that everything we do is easy
+> "I'm not really that good, and one day they will realize I don't know anything"
 
 We learn a little every day, so it never feels hard
 
@@ -153,13 +175,18 @@ and it is hard to see how much we have learned
 
 This leads to _Impostor Syndrome_
 
-## We don't know that we don't know
-This is the Dunning-Kruger effect
+**Solution:** Look at your journal and _reflect_ on how much have you learned in the last year
 
+## We don't know that we don't know
 > "Incompetent, and unaware of it"
 
-## We are bad at estimating the complexity of projects
-We think that we can finish a project in less time that it will really take
+This is the Dunning-Kruger effect
+
+It is hard to improve if we don't know we are bad
+
+Be open to criticism of your work
+
+**You are not your work**
 
 ## First idea: {.good .center .level1}
 :::{.Huge}
@@ -188,6 +215,16 @@ Separate style from structure
 ::: source
 This part is based on the ideas discussed in "LaTeX: A Document Preparation System" by Leslie Lamport (1986).
 :::
+
+## It is like a house {.large}
+
+Structure makes the house solid and comfortable
+
+If you only do decoration, the house looks nice but it is not solid
+
+Structure of the walls come first
+
+Painting the walls in a nice color is secondary
 
 ## Structural elements
 + Sections, subsections, paragraphs
@@ -221,17 +258,22 @@ Changing the `documentclass` will change the document _look_
 
 ## Advantages of LaTeX
 + Write first, compile later
+
 + Do not waste time playing with fonts
+
 + Good journals accept LaTeX submissions  
 (they also accept Microsoft Word format)
 
 ## LaTeX files are _text files_
 + Independent of any provider
+
 + Use your favorite text editor (VScode?)
+
 + Version control friendly (GitHub?)
+
 + Can probably be read 20 years from now
  
-(we cannot say the same about Microsoft Word)
+We cannot say the same about Microsoft Word
 
 ## According to the author of LaTeX
 > "[LaTeX] It's easy to use---if you're one of the 2% of the population who thinks logically and can read an instruction
@@ -254,8 +296,8 @@ So maybe the main advantage is that it _forces_ you to think logically and organ
 :::
 
 ## Bonus: Slides for presentations
-After writing your paper, you will probably present it
-(or maybe before)
+After writing your paper, you will probably present it  
+(or maybe before finishing it)
 
 Using structured document makes it easy to _recycle_ your material to presentation slides
 
@@ -285,6 +327,27 @@ Many tools can create BiBTeX files for you
 
 + Zotero
 + Mendeley
+
+## Collaborating with other people
+Since LaTeX files are _text files_, it can be put under _version control_
+
+In practice this means `git`, and maybe _GitHub_ or _GitLab_  
+(or something in your server)
+
+Several people can edit the same file at the same time  
+Git will do the right thing when merging
+
+It does not need permanent Internet access  
+(i.e. you can write while traveling)
+
+## Real time collaboration
+> Overleaf is an online collaborative writing and publishing tool
+
+>  Overleaf provides … an easy-to-use LaTeX editor with real-time collaboration and the compiled output produced automatically … as you type
+
+You do not need to install anything in your computer
+
+[https://www.overleaf.com/](https://www.overleaf.com/){target="_blank"}
 
 ## LaTeX disadvantages
 + LaTeX is hard to learn
@@ -364,16 +427,23 @@ Pandoc can convert between _many_ formats, including
 + Handles BiBTeX references
 
 ::: notes
-https://www.tablesgenerator.com/markdown_tables
-https://pandoc.org/try/
+See examples in the source code
 :::
+
+## Collaborating using Markdown
+Markdown files are text files
+
+Thus, _git_ is the way to go
+
+But if you want _real time_ collaboration, try [https://hackmd.io/](https://hackmd.io/){target="_blank"}
 
 ## Alternative: Microsoft Word
 Depending on your _boundary conditions_, you may choose to use a WYSIWYG word processor
 
 You can still follow the same philosophy:
 
-> Separate style from structure
++ Separate style from structure
++ Focus on content
 
 ## Style is not Structure {.large}
 In word processors like Word®,  
@@ -383,20 +453,57 @@ This is sometimes called **WYSIWYG**
 
 It is easy to change fonts, sizes, colors and other visual attributes, without paying attention to *structure*
 
-## It is like a house {.large}
-
-Structure makes the house solid.
-
-If you only do decoration, the house looks nice but it is not solid.
-
-Wall structure come first, "painting" is secondary
-
 ## Structured Word documents {.no-gap .center-h .full-v .shadow}
 ![](http://dry-lab.org/images/cmb1/Screenshot-2020-09-24-20.54.07.png)
 
 ## Now the document has structure {.no-gap .center-h .full-v .shadow}
 ![](http://dry-lab.org/images/cmb1/Screenshot-2020-09-24-20.58.42.png)
 
+## Collaborating {.center-h}
+Sharing Word documents by email is a **VERY BAD IDEA**  
+It leads to _chaos and confusion_
+
+![](sharing-word.svg)
+
+## Use an Online service
+You can share your document via Dropbox or Google Drive
+
+You can edit online using Microsoft Office 365 or Google Docs
+
+Several people can work in the same document at the same time
+
+**Advantage:** better spelling and grammar correction
+
+But they require a permanent internet connection
+
+## My protocol
+When I collaborate with non-markdown people, we use Google Docs
+
++ We avoid using **bold** and _italics_
+    + Exception: scientific names of species (e.g. _Homo sapiens_)
++ Instead we use _Styles_ to define the structure
++ I follow _pandoc_ rules for citations
++ Once finished, I export a Word file, and I convert it to Markdown using _pandoc_
++ We share the _code_ to produce every figure and table
+
+## My other protocol
+If my collaborators know Markdown, I often use RMarkdown
+
++ Developed for R language, but supports Python and other languages
++ Syntax is Markdown + code
+    + The code for each table and figure is included in the document
+    + This is a big step towards _replicability_
++ R replaces each _code chunk_ with its result, and gives a plain Markdown file
++ It uses _pandoc_ to make Word/PDF/HTML
++ We share using _git_
+
+## RMarkdown v/s Jupyter Notebooks
+Both are similar in spirit
+
++ Jupyter is like Excel. It is good to explore ideas
+    + It is code with a lot of comments
++ RMarkdown is like Word. It is good to write a paper
+    + It is text with just enough code
 
 ## Second idea {.center .good .level1}
 [Folder structure]{.Huge}
@@ -409,7 +516,7 @@ William Stafford Noble. _“A Quick Guide to Organizing Computational Biology Pr
 :::
 
 
-## This “someone” could be :
+## This “someone” could be:
 > ::: small
 > +  someone who read your published article and wants to try to reproduce your work,
 > + a collaborator who wants to understand the details of your experiments,
@@ -424,45 +531,56 @@ William Stafford Noble. _“A Quick Guide to Organizing Computational Biology Pr
 :::
 
 
-## Use a folder for every project {.center-h}
+## Folder structure for every project {.center-h}
 ![](folder-struct.svg)
 
-+ `docs` is where you write
+:::small
++ `docs` is where you write your paper/talk/thesis
 + `refs` is to store reference documents, like citations
-+ `data` is anything that you get from the real world into the computer
++ `data` is anything that you get from outside the computer
 + `results` is what your code produces
 + `scripts` and `src` is where you write your code
 + `bin` is for the compiled code
+:::
 
-## Here we follow two papers:
+## Data is Sacred
+Producing data is expensive and time consuming
 
-a [@Noble2009]
+You don't want to lose it
 
-b (@Noble2009)
+**Mark it _read only_ immediately**  
+(and make backups)
 
-https://pandoc.org/try/?text=%23+Section%0A%23%23+Subsection%0A%0A*+bullet%0A*+bullet+2%0A%0A%7C+Number++++%7C+Q1++%7C+Q2+%7C+Q3+%7C+Q4++%7C+Q5++%7C+Q6++%7C+Q7+%7C+Average+%7C%0A%7C-----------%7C-----%7C----%7C----%7C-----%7C-----%7C-----%7C----%7C---------%7C%0A%7C+405150030+%7C+100+%7C+30+%7C+75+%7C+100+%7C+100+%7C+100+%7C+60+%7C+81++++++%7C%0A%7C+405160015+%7C+0+++%7C+0++%7C+0++%7C+10++%7C+0+++%7C+100+%7C+0++%7C+16++++++%7C&from=markdown&to=latex&standalone=0
+Never modify them
 
-https://www.tablesgenerator.com/markdown_tables
+Create cleaned up versions via a script
 
-+ Greg Wilson et al. _“Best Practices for Scientific Computing.”_ PLoS Biology 12, no. 1 (2014): e1001745. https://doi.org/10.1371/journal.pbio.1001745.
-+ William Stafford Noble. _“A Quick Guide to Organizing Computational Biology Projects.”_ PLoS Computational Biology 5, no. 7 (2009): 1–5. https://doi.org/10.1371/journal.pcbi.1000424.
+## Filenames Rule 1: Be coherent
+Decide when to use `.`, `-`, and `_`
 
+Agree a standard with your collaborators
 
+Check periodically that you are following your standard  
+(maybe with a script)
 
-## We communicate with several entities
+## Rule 2: Write dates as YYYY-MM-DD
++ When was  8/3/1965?
++ Is today 5/11/2021 or 11/5/2021?
+
+YYYY-MM-DD is an ISO standard
+
+Sorting alphabetically, numerically, and chronologically are the same
+
+There is no ambiguity of meaning 
+
+<!-- ## We communicate with several entities
 - If we aim to **publish**, we better make reproducible and transparent research
     
-    - organize data in a way that we can recover it later
-        - folder structure
-        - file name convention
-        - raw data is read-only
-        - write **code** to tidy up data
-    - documentation
     - git
     - structured documents
         - start writing "acknowledgements", especially if there is funding
     - write code to produce figures/tables
-    - use checklists for repetitive work
+    - use checklists for repetitive work -->
 
 ## Collaborating {.center .good .level1}
 ## Sharing
@@ -476,9 +594,52 @@ https://www.tablesgenerator.com/markdown_tables
     + HackMD.io
     + Overleaf
 
-## Choosing roles
-## Who must be author
-## Practice
+## Choosing roles and protocols
+Define who are the authors early
+
+Recommended reading:
+
+“What Makes an Author.” Nature Methods 18, no. 9 (September 3, 2021): 983–983. https://doi.org/10.1038/s41592-021-01271-8.
+
+Gewin, Virginia. “Steer Clear of Conflict.” Nature 594, no. 7863 (2021): 462–63.
+
+## More recommendations
+::: small
+Weinberger, Cody J., James A. Evans, and Stefano Allesina. “Ten Simple (Empirical) Rules for Writing Science.” PLoS Computational Biology 11, no. 4 (2015): 11–13.
+
+Lortie, Christopher J. “Ten Simple Rules for Writing Statistical Book Reviews.” PLoS Computational Biology 15, no. 1 (2019): 1–5.
+
+Frassl, Marieke A., David P. Hamilton, et al. “Ten Simple Rules for Collaboratively Writing a Multi-Authored Paper.” PLoS Computational Biology 14, no. 11 (2018): 6–13.
+
+Erren, T, P Cullen, M Erren, and P Bourne. “Ten Simple Rules for Doing Your Best Research, According to Hamming.” PLoS Computational Biology 3, no. 10 (January 1, 2007): e213.
+:::
+
+## Final comments {.center .good .level1}
+
+## Take care of yourself
++ Drink a lot of water
+    + Especially when you drink alcohol
++ Get enough sleep
+    + Don't fry your brain, you only have one
++ Try to make a routine. Minimize trivial decisions
+    + Save your energy for important things
++ Go for a walk every day
+
+## Become a writer
++ Write every day. No exceptions.
+    + Start with 150 or 200 daily words
+    + Ideal is 750 daily words
+
++ Once you see yourself as "someone who writes every day", it will be easy to write papers, projects, thesis, etc.
+
++ Get addicted to write, as you are addicted to social media
+
++ Try the _Pomodoro technique_
+
+<!-- - define and agree on communication methods
+    - Slack, -->
+
+<!-- ## Practice
 - avoid WYSIWYG (until the last minute)
 - markdown/latex/pandoc/(Google docs+rules)
 
@@ -493,6 +654,15 @@ https://www.tablesgenerator.com/markdown_tables
         - Shared folders
         - Github 
         - Docker
-    - Online conversation
+    - Online conversation -->
 
 ## References
+::: {#refs .scroll}
+:::
+
+<!-- https://pandoc.org/try/
+
+https://pandoc.org/try/?text=%23+Section%0A%23%23+Subsection%0A%0A*+bullet%0A*+bullet+2%0A%0A%7C+Number++++%7C+Q1++%7C+Q2+%7C+Q3+%7C+Q4++%7C+Q5++%7C+Q6++%7C+Q7+%7C+Average+%7C%0A%7C-----------%7C-----%7C----%7C----%7C-----%7C-----%7C-----%7C----%7C---------%7C%0A%7C+405150030+%7C+100+%7C+30+%7C+75+%7C+100+%7C+100+%7C+100+%7C+60+%7C+81++++++%7C%0A%7C+405160015+%7C+0+++%7C+0++%7C+0++%7C+10++%7C+0+++%7C+100+%7C+0++%7C+16++++++%7C&from=markdown&to=latex&standalone=0
+
+https://stackedit.io/
+https://www.tablesgenerator.com/markdown_tables -->

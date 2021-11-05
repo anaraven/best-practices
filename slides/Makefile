@@ -1,4 +1,5 @@
 .DELETE_ON_ERROR:
+.SECONDARY:
 
 TEMPLATE:=template.html
 DESTDIR:=../site
@@ -14,9 +15,12 @@ $(DESTDIR)/%.html: options.yaml %.md
 	pandoc --citeproc --mathjax --section-divs --to revealjs --template=$(TEMPLATE) $^ -o $@
 	@date '+%Y-%m-%d %H:%M:%S "$@" is done'
 
-$(DESTDIR)/%.svg: %.gv
+%.svg: %.gv
 	@dot -Tsvg -o $@ $^
 	@date '+%Y-%m-%d %H:%M:%S "$@" is done'
 
-%.pdf: %.md
+$(DESTDIR)/%.svg: %.svg
+	cp $^ $@
+
+%.pdf: options.yaml %.md
 	pandoc --citeproc --to pdf $^ -o $@
