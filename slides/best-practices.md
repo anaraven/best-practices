@@ -5,7 +5,7 @@ author: Andrés Aravena, PhD
 company: Istanbul University
 date: "November 5, 2021"
 lang: en
-bibliography: [../../blog/_priv/bib/library.bib, ../../blog/_priv/bib/GeneralBooks.bib]
+bibliography: refs/recommended.bib
 nocite: |
   @Noble2009, @Wilson2014, @PeterJ.Feibelman165, @AlisonB.Miller171, @RyderCarroll3260, @DavidAllen1374, @Silva2007, @Annesley2010c, @Derish2010, @Annesley2010b, @Annesley2010, @Annesley2010f, @Annesley2010e, @Annesley2010a, @Annesley2010g, @Annesley2010h, @Annesley2010d, @Annesley2011, @Derish2011, @Annesley2011b, @Annesley2011a
 ---
@@ -657,12 +657,11 @@ Erren, T, P Cullen, M Erren, and P Bourne. “Ten Simple Rules for Doing Your Be
     - Online conversation -->
 
 ## References
+[(please scroll to see more entries)]{.small}
+
 ::: {#refs .scroll}
 :::
 
 <!-- https://pandoc.org/try/
-
-https://pandoc.org/try/?text=%23+Section%0A%23%23+Subsection%0A%0A*+bullet%0A*+bullet+2%0A%0A%7C+Number++++%7C+Q1++%7C+Q2+%7C+Q3+%7C+Q4++%7C+Q5++%7C+Q6++%7C+Q7+%7C+Average+%7C%0A%7C-----------%7C-----%7C----%7C----%7C-----%7C-----%7C-----%7C----%7C---------%7C%0A%7C+405150030+%7C+100+%7C+30+%7C+75+%7C+100+%7C+100+%7C+100+%7C+60+%7C+81++++++%7C%0A%7C+405160015+%7C+0+++%7C+0++%7C+0++%7C+10++%7C+0+++%7C+100+%7C+0++%7C+16++++++%7C&from=markdown&to=latex&standalone=0
-
 https://stackedit.io/
 https://www.tablesgenerator.com/markdown_tables -->

@@ -6,8 +6,7 @@ backgroundTransition: fade
 self_contained: no
 slide_level: 2
 plugin-notes: true
-revealjs-url: js/reveal.js-3.3.0.1
-revealjs-url-online: 'https://cdn.jsdelivr.net/npm/reveal.js@4'
+revealjs-url: 'https://cdn.jsdelivr.net/npm/reveal.js@3'
 controls: false
 progress: true
 history: true

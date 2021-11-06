@@ -290,7 +290,7 @@ code {
 /* } */
 
 .scroll {
-  max-height: 14em;
+  max-height: 13em;
   overflow: scroll;
 }
 
