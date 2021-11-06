@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Andrés Aravena, PhD" />
+  <meta name="dcterms.date" content="2021-11-05" />
+  <title>Best Practices</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@3/css/reveal.css"/>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@3/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+     .reveal .title {
+        margin-top: 125px;
+        margin-bottom: 50px;
+     }
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href='css/reveal-extra.css'/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Best Practices</h1>
+  <h1 class="subtitle">A talk for Barcelona Supercomputing Center’s Ph.D. students</h1>
+    <h2 class="author">Andrés Aravena, PhD</h2>
+    <h3 class="date">November 5, 2021</h3>
+</section>
+
+<section id="welcome-to-ph.d.-students-life" class="slide level2 center Large">
+<h2 class="center Large"><strong>Welcome to Ph.D. student’s life</strong></h2>
+<p>Congratulations, by the way</p>
+</section>
+<section id="doing-a-ph.d.-is-an-amazing-experience" class="slide level2 center">
+<h2 class="center">Doing a Ph.D. is an amazing experience</h2>
+<p>But it can also be stressful</p>
+</section>
+<section id="we-want-to-present-some-ideas-on-how-to-survive-and-succeed-your-ph.d." class="slide level2">
+<h2>We want to present some ideas on how to survive (and succeed) your Ph.D. </h2>
+<div class="large">
+<p>Some of them are personal opinions</p>
+<p>(informed by shared experiences)</p>
+<p>Some of them are endorsed by research</p>
+</div>
+</section>
+<section id="i-am-andres-aravena" class="slide level2">
+<h2>I am Andres Aravena</h2>
+<ul>
+<li>Assistant Professor at Molecular Biology and Genomics Department, Istanbul University</li>
+<li>Mathematical Engineer, U. of Chile</li>
+<li>PhD Informatics, INRIA–U Rennes 1, France</li>
+<li>PhD Mathematical Modeling, U. of Chile</li>
+<li>Research in machine learning for metagenomics, and in gene expression analysis for systems biology</li>
+</ul>
+</section>
+<section id="focus-on-philosophy-not-tools" class="slide level2">
+<h2>Focus on Philosophy, not Tools</h2>
+<p>Tools will change in time. There will be new tools</p>
+<p>You probably use tools that did not exist 10 years ago</p>
+<p>And they often are a matter of <em>personal taste</em></p>
+<p>So we will focus on the <em>philosophy</em> of the tools</p>
+<p>(i.e. the part that will not change)</p>
+</section>
+<section id="a-ph.d.-goal-is-to-produce-and-communicate-new-knowledge" class="slide level2 center black Large" data-background="yellow">
+<h2 class="center black Large" data-background="yellow"><strong>A Ph.D. goal is to produce and communicate new knowledge</strong></h2>
+<p>(we call it “Doing Science”)</p>
+</section>
+<section id="the-key-word-here-is-communicate" class="slide level2 center">
+<h2 class="center"><strong>The key word here is <em>communicate</em></strong></h2>
+<p>What is the value of a result that is not made public?</p>
+<!-- # Communication while doing research {.center .good} -->
+</section>
+<section id="we-communicate-with-our-collaborators" class="slide level2">
+<h2>We communicate with our <em>collaborators</em></h2>
+<p>Most of research is done in teams</p>
+<p>Good practices help teamwork, by:</p>
+<ul>
+<li>Keep track of what was (or was not) done</li>
+<li>Coordinate next steps</li>
+<li>Avoid work duplication</li>
+</ul>
+</section>
+<section id="but-i-work-alone" class="slide level2">
+<h2>…but I work alone…</h2>
+<p>Even if we work alone, we are still communicating</p>
+<ul>
+<li>with your <strong>supervisor/advisor</strong></li>
+<li>with the <strong>referees</strong> of your paper</li>
+<li>with other <strong>scientists</strong> that read (and cite) you
+<ul>
+<li>including the next Ph.D. student in your lab</li>
+</ul></li>
+<li>with the <strong>general public</strong></li>
+<li>with our <strong>future self</strong></li>
+</ul>
+<p>Each one of these interactions can improve following a good practice</p>
+<!-- ## …but I work alone…
+Even if we work alone, we are still communicating with reviewers, other scientists (that we would like to cite us) and the general public.
+
+Each one of these interactions forces/conveys/brings a corresponding good practice/discipline -->
+</section>
+<section id="communicate-with-your-supervisor" class="slide level2 large">
+<h2 class="large">Communicate with: your supervisor</h2>
+<p>Research results are not enough</p>
+<p>You must convince your boss (and the jury) that you deserve to be called “Doctor”</p>
+<p>Make your work easy to <em>understand</em></p>
+<p>Make clear what is your original contribution</p>
+</section>
+<section id="with-the-referees-of-your-paper" class="slide level2">
+<h2>…with the <strong>referees</strong> of your paper</h2>
+<p>Give them all they need to <em>replicate</em> and <em>validate</em> your work</p>
+<p>Referees are busy people and are not paid</p>
+<p>Being <em>clear and transparent</em> helps them to decide fast</p>
+<p>You will get published faster, or at least get good feedback</p>
+</section>
+<section id="with-other-scientists-in-your-field" class="slide level2">
+<h2>…with <strong>other scientists</strong> in your field</h2>
+<p>that will read your paper<br />
+(and hopefully cite your work)</p>
+<p>The game does not end when you publish</p>
+<p>50% of papers are read only by the referee</p>
+<p>Make your work easy to <em>understand</em> and <em>replicate</em></p>
+<div class="source">
+<p>I forgot where I read it</p>
+</div>
+</section>
+<section id="with-the-general-public" class="slide level2">
+<h2>with the <strong>general public</strong></h2>
+<p>Eventually, your work will have an impact outside academia</p>
+<p>(the end goal is to make a better world, no?)</p>
+<p>We need to be aware of the <em>ethical</em> implications</p>
+<ul>
+<li>Licensing</li>
+<li>Privacy</li>
+<li>Truth</li>
+</ul>
+<blockquote>
+<p>This is reflected in the <em>Reproducibility Crisis</em></p>
+</blockquote>
+</section>
+<section id="with-our-future-self" class="slide level2">
+<h2>with our <strong>future self</strong></h2>
+<p>Nothing is more frustrating that reading your old work</p>
+<p>“The past is a foreign country”</p>
+<p>Undocumented code/protocols are hard to understand…<br />
+and you can only blame yourself</p>
+</section>
+<section id="we-need-good-practices-because" class="slide level2 large level1 center black" data-background="yellow">
+<h2 class="large level1 center black" data-background="yellow">We need good practices, because</h2>
+<p><span class="Huge">our mind fools us</span></p>
+</section>
+<section id="we-think-we-will-never-forget-but-we-do" class="slide level2">
+<h2>We think we will never forget, but we do</h2>
+<blockquote>
+<p>“I remember it now, therefore I will remember it forever”</p>
+</blockquote>
+<p>When we see something or learn something, this fact is present in our short-term memory and we feel like we will always remember it</p>
+<p><strong>Solution:</strong> Use a journal (or lab notebook, or blog)</p>
+</section>
+<section id="we-think-our-memories-correspond-to-facts-but-often-they-do-not" class="slide level2">
+<h2>We think our memories correspond to facts, but often they do not</h2>
+<blockquote>
+<p>“Things were exactly as I remember”</p>
+</blockquote>
+<p>Research shows that our memory is not at all a “recorder”</p>
+<p>We misremember a lot</p>
+<p><strong>Solution:</strong> Use a journal</p>
+</section>
+<section id="we-are-bad-at-estimating-projects-complexity" class="slide level2">
+<h2>We are bad at estimating projects’ complexity</h2>
+<p>We think that we can finish a project in less time that it will really take</p>
+<p><strong>Solution:</strong> Write in your journal how much time you worked every day.<br />
+Reflect on how did you use your time</p>
+</section>
+<section id="we-think-that-everybody-knows-what-we-know-so-they-do-not-need-explanations" class="slide level2">
+<h2>We think that everybody knows what we know, so they do not need explanations</h2>
+<blockquote>
+<p>“I understand it, so everybody understands it”</p>
+</blockquote>
+<p>This is the <em>curse of knowledge</em></p>
+<p>It is <strong>the main reason</strong> why our text is hard to read</p>
+<p><strong>Solution:</strong> still trying to figure out. Practice.</p>
+</section>
+<section id="we-think-that-everything-we-do-is-easy" class="slide level2">
+<h2>We think that everything we do is easy</h2>
+<blockquote>
+<p>“I’m not really that good, and one day they will realize I don’t know anything”</p>
+</blockquote>
+<p>We learn a little every day, so it never feels hard</p>
+<p>But we accumulated learning in a large period,<br />
+and it is hard to see how much we have learned</p>
+<p>This leads to <em>Impostor Syndrome</em></p>
+<p><strong>Solution:</strong> Look at your journal and <em>reflect</em> on how much have you learned in the last year</p>
+</section>
+<section id="we-dont-know-that-we-dont-know" class="slide level2">
+<h2>We don’t know that we don’t know</h2>
+<blockquote>
+<p>“Incompetent, and unaware of it”</p>
+</blockquote>
+<p>This is the Dunning-Kruger effect</p>
+<p>It is hard to improve if we don’t know we are bad</p>
+<p>Be open to criticism of your work</p>
+<p><strong>You are not your work</strong></p>
+</section>
+<section id="first-idea" class="slide level2 good center level1">
+<h2 class="good center level1">First idea:</h2>
+<div class="Huge">
+<p>Structured Documents</p>
+</div>
+</section>
+<section id="structured-documents" class="slide level2">
+<h2>Structured documents</h2>
+<p>You probably know that using a good <em>data structure</em> can dramatically improve an algorithm</p>
+<p>And you use <em>structured programs</em></p>
+<p>The same applies to structuring our documents</p>
+<p>Maybe you have used LaTeX, or Markdown</p>
+<p>Maybe you know HTML</p>
+</section>
+<section id="separation-of-concerns" class="slide level2">
+<h2>Separation of concerns</h2>
+<p>The key idea is to describe <em>what things are</em>, not <em>how they look</em></p>
+<p>Describe the role of text, not the “looks”</p>
+<p>Separate style from structure</p>
+<div class="source">
+<p>This part is based on the ideas discussed in “LaTeX: A Document Preparation System” by Leslie Lamport (1986).</p>
+</div>
+</section>
+<section id="it-is-like-a-house" class="slide level2 large">
+<h2 class="large">It is like a house</h2>
+<p>Structure makes the house solid and comfortable</p>
+<p>If you only do decoration, the house looks nice but it is not solid</p>
+<p>Structure of the walls come first</p>
+<p>Painting the walls in a nice color is secondary</p>
+</section>
+<section id="structural-elements" class="slide level2">
+<h2>Structural elements</h2>
+<ul>
+<li>Sections, subsections, paragraphs</li>
+<li>Figures and Tables</li>
+<li>Lists</li>
+<li>References</li>
+<li>Equations</li>
+<li>Metadata
+<ul>
+<li>Title</li>
+<li>Authors</li>
+<li>Affiliations</li>
+<li>Dates: submission, acceptance</li>
+<li>Media/format</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-writing-in-latex" class="slide level2">
+<h2>Example: writing in LaTeX</h2>
+<p>A LaTeX document looks like this</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[a4paper]{<span class="ex">article</span>}</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">\title</span>{On computable numbers, with an application to the Entscheidungsproblem}</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">\author</span>{Alan M. Turing}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">\date</span>{28 May, 1936}</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">\section</span>{Introduction}</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>The ``computable&#39;&#39; numbers may be described as the real numbers whose</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>expression as a decimal are calculable by finite means.</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div>
+<p>LaTeX files are text files. They will never be obsolete.</p>
+<p>Changing the <code>documentclass</code> will change the document <em>look</em></p>
+</section>
+<section id="advantages-of-latex" class="slide level2">
+<h2>Advantages of LaTeX</h2>
+<ul>
+<li><p>Write first, compile later</p></li>
+<li><p>Do not waste time playing with fonts</p></li>
+<li><p>Good journals accept LaTeX submissions<br />
+(they also accept Microsoft Word format)</p></li>
+</ul>
+</section>
+<section id="latex-files-are-text-files" class="slide level2">
+<h2>LaTeX files are <em>text files</em></h2>
+<ul>
+<li><p>Independent of any provider</p></li>
+<li><p>Use your favorite text editor (VScode?)</p></li>
+<li><p>Version control friendly (GitHub?)</p></li>
+<li><p>Can probably be read 20 years from now</p></li>
+</ul>
+<p>We cannot say the same about Microsoft Word</p>
+</section>
+<section id="according-to-the-author-of-latex" class="slide level2">
+<h2>According to the author of LaTeX</h2>
+<blockquote>
+<p>“[LaTeX] It’s easy to use—if you’re one of the 2% of the population who thinks logically and can read an instruction manual. The other 98 % of the population would find it very hard or impossible to use.</p>
+</blockquote>
+<p>So maybe the main advantage is that it <em>forces</em> you to think logically and organize your ideas</p>
+<div class="source">
+<p>“How (La)TeX changed the face of Mathematics”. An E-interview with Leslie Lamport. <a href="http://lamport.azurewebsites.net/pubs/lamport-latex-interview.pdf" class="uri">http://lamport.azurewebsites.net/pubs/lamport-latex-interview.pdf</a></p>
+</div>
+</section>
+<section id="mistakes-that-people-should-stop-making" class="slide level2">
+<h2>3 mistakes that people should stop making</h2>
+<ol type="1">
+<li>Worrying too much about formatting and not enough about content.</li>
+<li>Worrying too much about formatting and not enough about content.</li>
+<li>Worrying too much about formatting and not enough about content.</li>
+</ol>
+<div class="source">
+<p>“How (La)TeX changed the face of Mathematics”. An E-interview with Leslie Lamport. <a href="http://lamport.azurewebsites.net/pubs/lamport-latex-interview.pdf" class="uri">http://lamport.azurewebsites.net/pubs/lamport-latex-interview.pdf</a></p>
+</div>
+</section>
+<section id="bonus-slides-for-presentations" class="slide level2">
+<h2>Bonus: Slides for presentations</h2>
+<p>After writing your paper, you will probably present it<br />
+(or maybe before finishing it)</p>
+<p>Using structured document makes it easy to <em>recycle</em> your material to presentation slides</p>
+<p>In LaTeX you can do that using the <code>beamer</code> document class</p>
+</section>
+<section id="writing-math-expressions" class="slide level2">
+<h2>Writing Math Expressions</h2>
+<p>LaTeX is favored by people who writes mathematical formulas</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode latex"><code class="sourceCode latex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ss">$$(a+b)^n=</span><span class="sc">\sum</span><span class="ss">_{k=0}^n </span><span class="sc">\frac</span><span class="ss">{n!}{k!(n-k)!} a^k b^{n-k}$$</span></span></code></pre></div>
+<p><span class="math display">\[(a+b)^n=\sum_{k=0}^n \frac{n!}{k!(n-k)!} a^k b^{n-k}\]</span></p>
+<p>You can use this syntax in Microsoft Word’s Equation Editor, and in web pages (using KaTeX or MathJax)</p>
+<p>Learning how to write math is a good investment</p>
+</section>
+<section id="bibliographic-references" class="slide level2">
+<h2>Bibliographic References</h2>
+<p>There are <em>hundreds</em> of citation styles</p>
+<p>Life is too short to sort references <em>manually</em></p>
+<p>LaTeX also provides a convenient way to handle references</p>
+<p>References are stored in a separate text file, in BiBTeX format</p>
+<p>Many tools can create BiBTeX files for you</p>
+<ul>
+<li>Zotero</li>
+<li>Mendeley</li>
+</ul>
+</section>
+<section id="collaborating-with-other-people" class="slide level2">
+<h2>Collaborating with other people</h2>
+<p>Since LaTeX files are <em>text files</em>, it can be put under <em>version control</em></p>
+<p>In practice this means <code>git</code>, and maybe <em>GitHub</em> or <em>GitLab</em><br />
+(or something in your server)</p>
+<p>Several people can edit the same file at the same time<br />
+Git will do the right thing when merging</p>
+<p>It does not need permanent Internet access<br />
+(i.e. you can write while traveling)</p>
+</section>
+<section id="real-time-collaboration" class="slide level2">
+<h2>Real time collaboration</h2>
+<blockquote>
+<p>Overleaf is an online collaborative writing and publishing tool</p>
+</blockquote>
+<blockquote>
+<p>Overleaf provides … an easy-to-use LaTeX editor with real-time collaboration and the compiled output produced automatically … as you type</p>
+</blockquote>
+<p>You do not need to install anything in your computer</p>
+<p><a href="https://www.overleaf.com/" target="_blank">https://www.overleaf.com/</a></p>
+</section>
+<section id="latex-disadvantages" class="slide level2">
+<h2>LaTeX disadvantages</h2>
+<ul>
+<li>LaTeX is hard to learn
+<ul>
+<li>This discourages many people</li>
+<li>Your collaborators may not use it</li>
+<li>You need to have the Reference Manual at hand</li>
+</ul></li>
+<li>It is oriented to producing printed material
+<ul>
+<li>It produces PDF files or equivalents</li>
+<li>Not suitable for Web or eBook</li>
+</ul></li>
+<li>Writing tables is hard</li>
+</ul>
+</section>
+<section id="alternative-markdown" class="slide level2">
+<h2>Alternative: Markdown</h2>
+<p>It is a light markup system that can be easily converted into nice presentations</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode md"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>% On computable numbers, with an application to the Entscheidungsproblem</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>% Alan M. Turing</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>% 28 May, 1936</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>The &quot;computable&quot; numbers may be described as the real numbers whose</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>expression as a decimal are calculable by finite means.</span></code></pre></div>
+<p>You probably have seen it in GitHub or Jupyter Notebooks</p>
+<p>Same philosophy as LaTeX, but simpler</p>
+</section>
+<section id="markdowns-author-says" class="slide level2">
+<h2>Markdown’s author says:</h2>
+<blockquote>
+<p>“The overriding design goal for Markdown’s formatting syntax is to make it as readable as possible.</p>
+<p>“The idea is that a Markdown-formatted document should be publishable as-is, as plain text, without looking like it’s been marked up with tags or formatting instructions.”</p>
+</blockquote>
+<div class="source">
+<p>John Gruber <a href="https://daringfireball.net/projects/markdown/" class="uri">https://daringfireball.net/projects/markdown/</a></p>
+</div>
+</section>
+<section id="using-markdown-in-practice" class="slide level2">
+<h2>Using Markdown in practice</h2>
+<p>There are dozens (maybe hundreds) of Markdown editors and compilers</p>
+<p>They offer many extensions</p>
+<p>They are not always compatible</p>
+<p>There is not yet an official standard</p>
+<p><strong>Recommendation</strong>: pandoc</p>
+</section>
+<section id="pandoc" class="slide level2">
+<h2>Pandoc</h2>
+<blockquote>
+<p>If you need to convert files from one markup format into another, pandoc is your swiss-army knife</p>
+</blockquote>
+<p>Pandoc can convert between <em>many</em> formats, including</p>
+<ul>
+<li>Markdown</li>
+<li>Microsoft Word/Powerpoint</li>
+<li>LaTeX</li>
+<li>Jupyter notebook</li>
+</ul>
+</section>
+<section id="practical-pandoc" class="slide level2">
+<h2>Practical pandoc</h2>
+<ul>
+<li><p>You can write your main text in Markdown, and convert it into LaTeX</p></li>
+<li><p>Pandoc understands LaTeX math expression, and can convert them to HTML or Microsoft Word</p></li>
+<li><p>You can mix Markdown and LaTeX, and pandoc will keep the LaTeX part</p></li>
+</ul>
+</section>
+<section id="pandoc-advantages" class="slide level2">
+<h2>Pandoc advantages</h2>
+<ul>
+<li><p>Text files</p></li>
+<li><p>It is easy to write tables in Markdown</p></li>
+<li><p>It is easy to write lists</p></li>
+<li><p>Can be used for slides</p>
+<ul>
+<li>Several web platforms (like this document)</li>
+<li>Microsoft Powerpoint</li>
+</ul></li>
+<li><p>Handles BiBTeX references</p></li>
+</ul>
+<aside class="notes">
+<p>See examples in the source code</p>
+</aside>
+</section>
+<section id="collaborating-using-markdown" class="slide level2">
+<h2>Collaborating using Markdown</h2>
+<p>Markdown files are text files</p>
+<p>Thus, <em>git</em> is the way to go</p>
+<p>But if you want <em>real time</em> collaboration, try <a href="https://hackmd.io/" target="_blank">https://hackmd.io/</a></p>
+</section>
+<section id="alternative-microsoft-word" class="slide level2">
+<h2>Alternative: Microsoft Word</h2>
+<p>Depending on your <em>boundary conditions</em>, you may choose to use a WYSIWYG word processor</p>
+<p>You can still follow the same philosophy:</p>
+<ul>
+<li>Separate style from structure</li>
+<li>Focus on content</li>
+</ul>
+</section>
+<section id="style-is-not-structure" class="slide level2 large">
+<h2 class="large">Style is not Structure</h2>
+<p>In word processors like Word®,<br />
+<em>What You See Is What You Get</em></p>
+<p>This is sometimes called <strong>WYSIWYG</strong></p>
+<p>It is easy to change fonts, sizes, colors and other visual attributes, without paying attention to <em>structure</em></p>
+</section>
+<section id="structured-word-documents" class="slide level2 no-gap center-h full-v shadow">
+<h2 class="no-gap center-h full-v shadow">Structured Word documents</h2>
+<p><img data-src="http://dry-lab.org/images/cmb1/Screenshot-2020-09-24-20.54.07.png" /></p>
+</section>
+<section id="now-the-document-has-structure" class="slide level2 no-gap center-h full-v shadow">
+<h2 class="no-gap center-h full-v shadow">Now the document has structure</h2>
+<p><img data-src="http://dry-lab.org/images/cmb1/Screenshot-2020-09-24-20.58.42.png" /></p>
+</section>
+<section id="collaborating" class="slide level2 center-h">
+<h2 class="center-h">Collaborating</h2>
+<p>Sharing Word documents by email is a <strong>VERY BAD IDEA</strong><br />
+It leads to <em>chaos and confusion</em></p>
+<p><img data-src="sharing-word.svg" /></p>
+</section>
+<section id="use-an-online-service" class="slide level2">
+<h2>Use an Online service</h2>
+<p>You can share your document via Dropbox or Google Drive</p>
+<p>You can edit online using Microsoft Office 365 or Google Docs</p>
+<p>Several people can work in the same document at the same time</p>
+<p><strong>Advantage:</strong> better spelling and grammar correction</p>
+<p>But they require a permanent internet connection</p>
+</section>
+<section id="my-protocol" class="slide level2">
+<h2>My protocol</h2>
+<p>When I collaborate with non-markdown people, we use Google Docs</p>
+<ul>
+<li>We avoid using <strong>bold</strong> and <em>italics</em>
+<ul>
+<li>Exception: scientific names of species (e.g. <em>Homo sapiens</em>)</li>
+</ul></li>
+<li>Instead we use <em>Styles</em> to define the structure</li>
+<li>I follow <em>pandoc</em> rules for citations</li>
+<li>Once finished, I export a Word file, and I convert it to Markdown using <em>pandoc</em></li>
+<li>We share the <em>code</em> to produce every figure and table</li>
+</ul>
+</section>
+<section id="my-other-protocol" class="slide level2">
+<h2>My other protocol</h2>
+<p>If my collaborators know Markdown, I often use RMarkdown</p>
+<ul>
+<li>Developed for R language, but supports Python and other languages</li>
+<li>Syntax is Markdown + code
+<ul>
+<li>The code for each table and figure is included in the document</li>
+<li>This is a big step towards <em>replicability</em></li>
+</ul></li>
+<li>R replaces each <em>code chunk</em> with its result, and gives a plain Markdown file</li>
+<li>It uses <em>pandoc</em> to make Word/PDF/HTML</li>
+<li>We share using <em>git</em></li>
+</ul>
+</section>
+<section id="rmarkdown-vs-jupyter-notebooks" class="slide level2">
+<h2>RMarkdown v/s Jupyter Notebooks</h2>
+<p>Both are similar in spirit</p>
+<ul>
+<li>Jupyter is like Excel. It is good to explore ideas
+<ul>
+<li>It is code with a lot of comments</li>
+</ul></li>
+<li>RMarkdown is like Word. It is good to write a paper
+<ul>
+<li>It is text with just enough code</li>
+</ul></li>
+</ul>
+</section>
+<section id="second-idea" class="slide level2 center good level1">
+<h2 class="center good level1">Second idea</h2>
+<p><span class="Huge">Folder structure</span></p>
+</section>
+<section id="prepare-your-files-for-the-next-user-it-may-be-you" class="slide level2">
+<h2>Prepare your files for the next user… <br/>it may be you</h2>
+<blockquote>
+<p>Someone unfamiliar with your project should be able to look at your computer files and understand in detail what you did and why</p>
+</blockquote>
+<div class="source">
+<p>William Stafford Noble. <em>“A Quick Guide to Organizing Computational Biology Projects.”</em> PLoS Computational Biology 5, no. 7 (2009): 1–5. https://doi.org/10.1371/journal.pcbi.1000424.</p>
+</div>
+</section>
+<section id="this-someone-could-be" class="slide level2">
+<h2>This “someone” could be:</h2>
+<blockquote>
+<div class="small">
+<ul>
+<li>someone who read your published article and wants to try to reproduce your work,</li>
+<li>a collaborator who wants to understand the details of your experiments,</li>
+<li>a future student working in your lab who wants to extend your work after you have moved on to a new job,</li>
+<li>your research advisor, who may be interested in understanding your work or who may be evaluating your research skills.</li>
+</ul>
+</div>
+</blockquote>
+<p>Most commonly, however, that “someone” is you.</p>
+<div class="source">
+<p>William Stafford Noble. <em>“A Quick Guide to Organizing Computational Biology Projects.”</em> PLoS Computational Biology 5, no. 7 (2009): 1–5. https://doi.org/10.1371/journal.pcbi.1000424.</p>
+</div>
+</section>
+<section id="folder-structure-for-every-project" class="slide level2 center-h">
+<h2 class="center-h">Folder structure for every project</h2>
+<p><img data-src="folder-struct.svg" /></p>
+<div class="small">
+<ul>
+<li><code>docs</code> is where you write your paper/talk/thesis</li>
+<li><code>refs</code> is to store reference documents, like citations</li>
+<li><code>data</code> is anything that you get from outside the computer</li>
+<li><code>results</code> is what your code produces</li>
+<li><code>scripts</code> and <code>src</code> is where you write your code</li>
+<li><code>bin</code> is for the compiled code</li>
+</ul>
+</div>
+</section>
+<section id="data-is-sacred" class="slide level2">
+<h2>Data is Sacred</h2>
+<p>Producing data is expensive and time consuming</p>
+<p>You don’t want to lose it</p>
+<p><strong>Mark it <em>read only</em> immediately</strong><br />
+(and make backups)</p>
+<p>Never modify them</p>
+<p>Create cleaned up versions via a script</p>
+</section>
+<section id="filenames-rule-1-be-coherent" class="slide level2">
+<h2>Filenames Rule 1: Be coherent</h2>
+<p>Decide when to use <code>.</code>, <code>-</code>, and <code>_</code></p>
+<p>Agree a standard with your collaborators</p>
+<p>Check periodically that you are following your standard<br />
+(maybe with a script)</p>
+</section>
+<section id="rule-2-write-dates-as-yyyy-mm-dd" class="slide level2">
+<h2>Rule 2: Write dates as YYYY-MM-DD</h2>
+<ul>
+<li>When was 8/3/1965?</li>
+<li>Is today 5/11/2021 or 11/5/2021?</li>
+</ul>
+<p>YYYY-MM-DD is an ISO standard</p>
+<p>Sorting alphabetically, numerically, and chronologically are the same</p>
+<p>There is no ambiguity of meaning</p>
+<!-- ## We communicate with several entities
+- If we aim to **publish**, we better make reproducible and transparent research
+    
+    - git
+    - structured documents
+        - start writing "acknowledgements", especially if there is funding
+    - write code to produce figures/tables
+    - use checklists for repetitive work -->
+</section>
+<section id="collaborating-1" class="slide level2 center good level1">
+<h2 class="center good level1">Collaborating</h2>
+</section>
+<section id="sharing" class="slide level2">
+<h2>Sharing</h2>
+<ul>
+<li>Git
+<ul>
+<li>GitHub</li>
+<li>Bitbucket</li>
+<li>GitLab</li>
+<li>your own servers</li>
+</ul></li>
+<li>Online editors
+<ul>
+<li>Google Docs</li>
+<li>HackMD.io</li>
+<li>Overleaf</li>
+</ul></li>
+</ul>
+</section>
+<section id="choosing-roles-and-protocols" class="slide level2">
+<h2>Choosing roles and protocols</h2>
+<p>Define who are the authors early</p>
+<p>Recommended reading:</p>
+<p>“What Makes an Author.” Nature Methods 18, no. 9 (September 3, 2021): 983–983. https://doi.org/10.1038/s41592-021-01271-8.</p>
+<p>Gewin, Virginia. “Steer Clear of Conflict.” Nature 594, no. 7863 (2021): 462–63.</p>
+</section>
+<section id="more-recommendations" class="slide level2">
+<h2>More recommendations</h2>
+<div class="small">
+<p>Weinberger, Cody J., James A. Evans, and Stefano Allesina. “Ten Simple (Empirical) Rules for Writing Science.” PLoS Computational Biology 11, no. 4 (2015): 11–13.</p>
+<p>Lortie, Christopher J. “Ten Simple Rules for Writing Statistical Book Reviews.” PLoS Computational Biology 15, no. 1 (2019): 1–5.</p>
+<p>Frassl, Marieke A., David P. Hamilton, et al. “Ten Simple Rules for Collaboratively Writing a Multi-Authored Paper.” PLoS Computational Biology 14, no. 11 (2018): 6–13.</p>
+<p>Erren, T, P Cullen, M Erren, and P Bourne. “Ten Simple Rules for Doing Your Best Research, According to Hamming.” PLoS Computational Biology 3, no. 10 (January 1, 2007): e213.</p>
+</div>
+</section>
+<section id="final-comments" class="slide level2 center good level1">
+<h2 class="center good level1">Final comments</h2>
+</section>
+<section id="take-care-of-yourself" class="slide level2">
+<h2>Take care of yourself</h2>
+<ul>
+<li>Drink a lot of water
+<ul>
+<li>Especially when you drink alcohol</li>
+</ul></li>
+<li>Get enough sleep
+<ul>
+<li>Don’t fry your brain, you only have one</li>
+</ul></li>
+<li>Try to make a routine. Minimize trivial decisions
+<ul>
+<li>Save your energy for important things</li>
+</ul></li>
+<li>Go for a walk every day</li>
+</ul>
+</section>
+<section id="become-a-writer" class="slide level2">
+<h2>Become a writer</h2>
+<ul>
+<li><p>Write every day. No exceptions.</p>
+<ul>
+<li>Start with 150 or 200 daily words</li>
+<li>Ideal is 750 daily words</li>
+</ul></li>
+<li><p>Once you see yourself as “someone who writes every day”, it will be easy to write papers, projects, thesis, etc.</p></li>
+<li><p>Get addicted to write, as you are addicted to social media</p></li>
+<li><p>Try the <em>Pomodoro technique</em></p></li>
+</ul>
+<!-- - define and agree on communication methods
+    - Slack, -->
+<!-- ## Practice
+- avoid WYSIWYG (until the last minute)
+- markdown/latex/pandoc/(Google docs+rules)
+
+- When we have coauthors
+    - Define who are the authors early
+    - define and agree on communication methods
+        - slack
+    - Do not send attached word documents!
+        - `doc-v1-real-final2.docx`
+        - leads to a cacophony of version
+    - Tools to collaborate
+        - Shared folders
+        - Github 
+        - Docker
+    - Online conversation -->
+</section>
+<section id="references" class="slide level2">
+<h2>References</h2>
+<p><span class="small">(please scroll to see more entries)</span></p>
+<div id="refs" class="scroll references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-DavidAllen1374" class="csl-entry" role="doc-biblioentry">
+Allen, David. 2011. <em>Getting Things Done</em>. Little, Brown Book Group.
+</div>
+<div id="ref-Annesley2010b" class="csl-entry" role="doc-biblioentry">
+Annesley, Thomas M. 2010a. <span>“<span class="nocase">Bars and pies make better desserts than figures</span>.”</span> <em>Clinical Chemistry</em> 56 (9): 1394–1400. <a href="https://doi.org/10.1373/clinchem.2010.152298">https://doi.org/10.1373/clinchem.2010.152298</a>.
+</div>
+<div id="ref-Annesley2010" class="csl-entry" role="doc-biblioentry">
+———. 2010b. <span>“<span class="nocase">Bring your best to the table</span>.”</span> <em>Clinical Chemistry</em> 56 (10): 1528–34. <a href="https://doi.org/10.1373/clinchem.2010.153502">https://doi.org/10.1373/clinchem.2010.153502</a>.
+</div>
+<div id="ref-Annesley2010g" class="csl-entry" role="doc-biblioentry">
+———. 2010c. <span>“<span class="nocase">"It was a cold and rainy night": Set the scene with a good introduction</span>.”</span> <em>Clinical Chemistry</em> 56 (5): 708–13. <a href="https://doi.org/10.1373/clinchem.2010.143628">https://doi.org/10.1373/clinchem.2010.143628</a>.
+</div>
+<div id="ref-Annesley2010c" class="csl-entry" role="doc-biblioentry">
+———. 2010d. <span>“<span class="nocase">Put your best figure forward: Line graphs and scattergrams</span>.”</span> <em>Clinical Chemistry</em> 56 (8): 1229–33. <a href="https://doi.org/10.1373/clinchem.2010.150060">https://doi.org/10.1373/clinchem.2010.150060</a>.
+</div>
+<div id="ref-Annesley2010d" class="csl-entry" role="doc-biblioentry">
+———. 2010e. <span>“<span class="nocase">Show your cards: The results section and the poker game</span>.”</span> <em>Clinical Chemistry</em> 56 (7): 1066–70. <a href="https://doi.org/10.1373/clinchem.2010.148148">https://doi.org/10.1373/clinchem.2010.148148</a>.
+</div>
+<div id="ref-Annesley2010a" class="csl-entry" role="doc-biblioentry">
+———. 2010f. <span>“<span class="nocase">The abstract and the elevator talk: a tale of two summaries.</span>”</span> <em>Clinical Chemistry</em> 56 (4): 521–24. <a href="https://doi.org/10.1373/clinchem.2009.142026">https://doi.org/10.1373/clinchem.2009.142026</a>.
+</div>
+<div id="ref-Annesley2010f" class="csl-entry" role="doc-biblioentry">
+———. 2010g. <span>“<span class="nocase">The discussion section: Your closing argument</span>.”</span> <em>Clinical Chemistry</em> 56 (11): 1671–74. <a href="https://doi.org/10.1373/clinchem.2010.155358">https://doi.org/10.1373/clinchem.2010.155358</a>.
+</div>
+<div id="ref-Annesley2010e" class="csl-entry" role="doc-biblioentry">
+———. 2010h. <span>“<span class="nocase">The title says it all</span>.”</span> <em>Clinical Chemistry</em> 56 (3): 357–60. <a href="https://doi.org/10.1373/clinchem.2009.141523">https://doi.org/10.1373/clinchem.2009.141523</a>.
+</div>
+<div id="ref-Annesley2010h" class="csl-entry" role="doc-biblioentry">
+———. 2010i. <span>“<span class="nocase">Who, what, when, where, how, and why: The ingredients in the recipe for a successful methods section</span>.”</span> <em>Clinical Chemistry</em> 56 (6): 897–901. <a href="https://doi.org/10.1373/clinchem.2010.146589">https://doi.org/10.1373/clinchem.2010.146589</a>.
+</div>
+<div id="ref-Annesley2011" class="csl-entry" role="doc-biblioentry">
+———. 2011a. <span>“<span class="nocase">Giving credit: Citations and references</span>.”</span> <em>Clinical Chemistry</em> 57 (1): 14–17. <a href="https://doi.org/10.1373/clinchem.2010.158048">https://doi.org/10.1373/clinchem.2010.158048</a>.
+</div>
+<div id="ref-Annesley2011a" class="csl-entry" role="doc-biblioentry">
+———. 2011b. <span>“<span class="nocase">Passing the Paternit<span class="nocase">é</span> test</span>.”</span> <em>Clinical Chemistry</em> 57 (9): 1239–41. <a href="https://doi.org/10.1373/clinchem.2011.170738">https://doi.org/10.1373/clinchem.2011.170738</a>.
+</div>
+<div id="ref-Annesley2011b" class="csl-entry" role="doc-biblioentry">
+———. 2011c. <span>“<span class="nocase">Top 10 tips for responding to reviewer and editor comments</span>.”</span> <em>Clinical Chemistry</em> 57 (4): 551–54. <a href="https://doi.org/10.1373/clinchem.2011.162388">https://doi.org/10.1373/clinchem.2011.162388</a>.
+</div>
+<div id="ref-RyderCarroll3260" class="csl-entry" role="doc-biblioentry">
+Carroll, Ryder. 2018. <em>The Bullet Journal Method: Track Your Past, Order Your Present, Plan Your Future</em>. HarperCollins Publishers.
+</div>
+<div id="ref-Derish2010" class="csl-entry" role="doc-biblioentry">
+Derish, Pamela A., and Thomas M. Annesley. 2010. <span>“<span class="nocase">If an IRDAM journal is what you choose, then sequential results are what you use</span>.”</span> <em>Clinical Chemistry</em> 56 (8): 1226–28. <a href="https://doi.org/10.1373/clinchem.2010.150961">https://doi.org/10.1373/clinchem.2010.150961</a>.
+</div>
+<div id="ref-Derish2011" class="csl-entry" role="doc-biblioentry">
+———. 2011. <span>“<span class="nocase">How to write a rave review</span>.”</span> <em>Clinical Chemistry</em> 57 (3): 388–91. <a href="https://doi.org/10.1373/clinchem.2010.160622">https://doi.org/10.1373/clinchem.2010.160622</a>.
+</div>
+<div id="ref-PeterJ.Feibelman165" class="csl-entry" role="doc-biblioentry">
+Feibelman, Peter J. 2011. <em>A PhD Is Not Enough!: A Guide to Survival in Science</em>. Basic Books.
+</div>
+<div id="ref-AlisonB.Miller171" class="csl-entry" role="doc-biblioentry">
+Miller, Alison B. 2009. <em>Finish Your Dissertation Once and for All!: How to Overcome Psychological Barriers, Get Results, and Move on with Your Life</em>. American Psychological Association.
+</div>
+<div id="ref-Noble2009" class="csl-entry" role="doc-biblioentry">
+Noble, William Stafford. 2009. <span>“<span class="nocase">A Quick Guide to Organizing Computational Biology Projects</span>.”</span> Edited by Fran Lewitter. <em>PLoS Computational Biology</em> 5 (7): e1000424. <a href="https://doi.org/10.1371/journal.pcbi.1000424">https://doi.org/10.1371/journal.pcbi.1000424</a>.
+</div>
+<div id="ref-Silva2007" class="csl-entry" role="doc-biblioentry">
+Silva, Alcino J. 2007. <span>“<span class="nocase">The science of research: The principles underlying the discovery of cognitive and other biological mechanisms</span>.”</span> <em>Journal of Physiology-Paris</em> 101 (4–6): 203–13. https://doi.org/<a href="http://dx.doi.org/10.1016/j.jphysparis.2007.11.002">http://dx.doi.org/10.1016/j.jphysparis.2007.11.002</a>.
+</div>
+<div id="ref-Wilson2014" class="csl-entry" role="doc-biblioentry">
+Wilson, G., D. a. Aruliah, C. T. Brown, N. P. Chue Hong, M. Davis, R. T. Guy, S. H. D. Haddock, et al. 2014. <span>“<span class="nocase">Best practices for scientific computing</span>.”</span> <em>PLoS Biology</em> 12 (1): e1001745. <a href="https://doi.org/10.1371/journal.pbio.1001745">https://doi.org/10.1371/journal.pbio.1001745</a>.
+</div>
+</div>
+<!-- https://pandoc.org/try/
+https://stackedit.io/
+https://www.tablesgenerator.com/markdown_tables -->
+</section>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@3/lib/js/head.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@3/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c',
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Vertical centering of slides
+        center: false,
+
+        navigationMode: 'linear',
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // Hides the address bar on mobile devices
+        hideAddressBar: true,
+
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style
+        transition: 'fade', // none/fade/slide/convex/concave/zoom
+
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+
+
+        // Transition style for full page slide backgrounds
+
+        backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1100,
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'https://cdn.jsdelivr.net/npm/reveal.js@3/plugin/notes/notes.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+    </body>
+</html>
